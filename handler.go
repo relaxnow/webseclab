@@ -92,6 +92,17 @@ func MakeMainHandler(noindex bool) LabHandler {
 		funcmap := CustomMap()
 		handler, ok := funcmap[r.URL.Path]
 		if ok {
+			if (r.URL.Path == "/xss/reflect/backslash1") { return XSSBackslash(w,r) }
+			if (r.URL.Path == "/xss/reflect/doubq1") { return XSSDoubq(w,r) }
+			if (r.URL.Path == "/xss/reflect/enc2") { return XSSEnc(w,r) }
+			if (r.URL.Path == "/xss/reflect/enc2_fp") { return XSSEncFp(w,r) }
+			if (r.URL.Path == "/xss/reflect/full_cookies1") { return XSSFullCookies(w,r) }
+			if (r.URL.Path == "/xss/reflect/full_headers1") { return XSSFullHeaders(w,r) }
+			if (r.URL.Path == "/xss/reflect/full_useragent1") { return XSSFullUseragent(w,r) }
+			if (r.URL.Path == "/xss/reflect/inredirect1_fp") { return XSSInRedirectFp(w,r) }
+			if (r.URL.Path == "/xss/reflect/post1") { return XSSPost(w,r) }
+			if (r.URL.Path == "/xss/reflect/refer1") { return XSSReferer(w,r) }
+			if (r.URL.Path == "/xss/reflect/rs1") { return XSSRs(w,r) }
 			return handler(w, r)
 		}
 		filterMap := filterMap()
